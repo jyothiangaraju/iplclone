@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     {% load static %}
+    <link rel="stylesheet" type = "text/css"  href="{% static 'bulma.css' %}" >
+    <style>
+    .per
+    {
+    width:30%;
+    }
+    h1
+    {
+    font-size:40px;
+    }
+    </style>
+</head>
+<body>
+<h1 align="center"><b>List Details</b></h1><br><br>
+<div align="center">
+<form method="POST" class="form">
+{% csrf_token %}
+    {{ form.name }}<br><br>
+    <input type="submit" class="button is-primary" value="save" >
+</form>
+</div>
+</body>
+</html>

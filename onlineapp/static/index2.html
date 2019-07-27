@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type = "text/css"  href="{% static 'bulma.css' %}" >
+    <title>Title</title>
+    <style>
+         .per
+        {
+            width : 30%;
+        }
+        h1
+        {
+        font-size:40px;
+        }
+    </style>
+</head>
+<body>
+<br>
+<br>
+<h1 align="center"><b>Signup</b></h1>
+<br>
+<div align="center">
+<form method="POST" class="form" >
+{% csrf_token %}
+    <!--{{ form.as_p }}<br>-->
+    {{ form.first_name }}<br><br>
+    {{ form.last_name }}<br><br>
+    {{ form.username }}<br><br>
+    {{ form.password }}<br><br>
+    <input type="submit" class="button is-primary"><br><br>
+   <a href="{% url 'login_url' %}" class="tag is-light is-medium">login</a>
+</form>
+</div>
+</body>
+</html>

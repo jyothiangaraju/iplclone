@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" type = "text/css"  href="{% static 'bulma.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <style>
+        h1
+        {
+        font-size:50px;
+        color:white;
+        }
+        .wid
+        {
+         margin: auto;
+  width: 70%;
+  padding: 10px;
+        background-color:#f0f0f0;
+        }
+        .hed
+        {
+         background-color:#b4b4b4;
+        }
+</style>
+</head>
+<body bgcolor="green">
+<h1 align="center"><b>IPL T20</b></h1>
+<select onchange="location=this.options[this.selectedIndex].value">
+    <option value="2019">2019</option>
+    <option value="2018" >2018</option>
+    <option value="2017" >2017</option>
+    <option value="2016" >2016</option>
+    <option value="2015" >2015</option>
+   <option value="2014">2014</option>
+    <option value="2013" >2013</option>
+    <option value="2012" >2012</option>
+    <option value="2011" >2011</option>
+    <option value="2010">2010</option>
+    <option value="2009" >2009</option>
+    <option value="2008" >2008</option>
+</select>
+ <a href="/logout/" class="tag is-light is-medium" align="right">logout</a>
+<br>
+<br>
+<!--<table align="center" width="100%" class="table is-striped">-->
+    <!--<tr>-->
+        <!--<th>-->
+            <!--Team1-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--Team2-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--venue-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--Toss_winner-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--Toss_decision-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--Winner-->
+        <!--</th>-->
+        <!--<th>-->
+            <!--player_of_the_match-->
+        <!--</th>-->
+    <!--</tr>-->
+
+    {% for match in list %}
+<div class="card wid">
+        <p class="card-header-title hed" >
+       {{ match.team1 }}
+        vs {{ match.team2 }}
+    </p>
+
+     <div class="card-content">
+       <strong>Venue:</strong> {{ match.venue }}<br>
+       <strong>Toss_winner:</strong> {{ match.toss_winner }}
+       <strong>Toss_decision:</strong> {{ match.toss_decision }}<br>
+        <strong>Winner:</strong>{{ match.winner }}
+       <strong>Player of the match:</strong> {{ match.player_of_the_match }}<br><br>
+        <a href="{{ match.season }}/{{ match.id }}" class="button is-primary is-medium" >view match details</a>
+        </div>
+     </div>
+     <br>
+<br>
+    {% endfor %}
+
+{% if list.has_other_pages %}
+  <ul class="pagination">
+    {% if list.has_previous %}
+      <li><a href="?page={{ list.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in list.paginator.page_range %}
+      {% if list.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if list.has_next %}
+      <li><a href="?page={{ list.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</body>
+</html>

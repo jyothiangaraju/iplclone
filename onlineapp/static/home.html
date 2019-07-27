@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type = "text/css"  href="{% static 'bulma.css' %}" >
+    <title>Title</title>
+    <style>
+    .back
+    {
+    background-image: url("{% static 'ipllogo.jpg' %}");
+    background-size:cover;
+    }
+    .point
+    {
+    float:left;
+    align:center;
+    }
+    .point1
+    {
+    float:right;
+    }
+    .pad
+    {
+    padding:300px 0;
+    }
+    </style>
+</head>
+<body class="back" >
+<!--<figure class="image is-128x128">-->
+  <!--<img src="{% static 'ipllogo.jpg' %}">-->
+<!--</figure>-->
+<br>
+<br>
+   <a href="{% url 'points_html' 2019 %}" class="button is-medium is-warning point">Points Table</a>
+<a href="{% url 'season_html' 2019 %}" class="button is-medium is-warning">Seasons</a>
+<a href="{% url 'login_url' %}" class="button is-medium is-warning point1">Login</a>
+<a href="{% url 'signup_url' %}" class="button is-medium is-warning point1">Signup</a>
+<div class="pad"></div>
+</body>
+</html>

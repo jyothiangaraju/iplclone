@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+    <link rel="stylesheet" type = "text/css"  href="{% static 'bulma.css' %}" >
+    <style>
+    .per
+    {
+    width:30%;
+    }
+    h1
+    {
+    font-size:40px;
+    }
+    </style>
+</head>
+<body>
+<h1 align="center"><b>Match Details</b></h1>
+<br>
+<br>
+
+<table align="center" width="100%" >
+    <tr>
+        <td>
+             <div class="card">
+                 <p class="card-header-title hed" >
+       <b>TOP RUN SCORERS</b>
+                 </p>
+        <div class="card-content">
+            {% for run in topruns %}
+            {{ run.batsman }}-
+            {{ run.batting_team }}-
+            {{ run.the_Score }}
+            <br>
+            {% endfor %}
+        </div>
+             </div>
+        </td>
+        <td>
+    <div class="card">
+    {% for key in match %}
+        <p class="card-content">
+           <b>Team1:</b>
+            {{ key.team1 }}
+
+            <b>Team2:</b>{{ key.team2 }}
+            <br><br>
+            <b>Toss_winner:</b>{{ key.toss_winner }}
+
+            <b>Toss_decision:</b>{{ key.toss_decision }}
+       <br>
+            <b>winner:</b>{{ key.winner }}
+       <br>
+            <b>win_by_runs:</b>{{ key.winner_by_runs }}
+      <br>
+            <b>win_by_wickets:</b>{{ key.winner_by_wickets }}
+       <br>
+            <b>man_of_the match:</b>{{ key.player_of_the_match }}
+        </p>
+    </div>
+        </td>
+        <td>
+             <div class="card">
+                 <p class="card-header-title hed" >
+       <b>TOP WICKET TAKERS</b>
+                 </p>
+        <div class="card-content">
+            {% for wicket in topwickets %}
+            {{ wicket.fielder }}-
+            {{ wicket.bowling_team}}-
+            {{ wicket.wic }}
+            <br>
+            {% endfor %}
+        </div>
+             </div>
+        </td>
+    </tr>
+</table>
+{% endfor %}
+<table  align="center" width="100%" class="table is-striped">
+    <tr>
+        <th>over</th>
+        <th>ball</th>
+        <th>is_super_over</th>
+        <th>wide_runs</th>
+         <th>extra_runs</th>
+         <th>batsman_runs</th>
+        <th>total_runs</th>
+
+    </tr>
+ {% for ball in list %}
+    <tr>
+        <td>{{ ball.over }}</td>
+        <td>{{ ball.ball }}</td>
+        <td>{{ ball.is_super_over }}</td>
+        <td>{{ ball.wide_runs }}</td>
+        <td>{{ ball.extra_runs }}</td>
+        <td>{{ ball.batsman_runs }}</td>
+        <td>{{ ball.total_runs }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
